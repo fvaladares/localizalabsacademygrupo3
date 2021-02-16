@@ -35,5 +35,16 @@
             app:destination="@id/startFragment"
             app:popUpTo="@id/startFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_selectDateFragment_to_selectHourFragment"
+            app:destination="@id/selectHourFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectHourFragment"
+        android:name="com.localizalabsacademy.mobile.rentacar.ui.SelectHourFragment"
+        android:label="SelectHourFragment">
+        <action
+            android:id="@+id/action_selectHourFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
 </navigation>

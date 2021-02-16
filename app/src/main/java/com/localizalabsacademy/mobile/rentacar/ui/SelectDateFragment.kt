@@ -59,7 +59,7 @@ class SelectDateFragment : Fragment() {
     }
 
     fun okButtonAction() {
-
+        findNavController().navigate(R.id.action_selectDateFragment_to_selectHourFragment)
         Toast.makeText(context, "Okay button clicked", Toast.LENGTH_SHORT).show()
         Log.d(TAG, "Okay Action activated")
     }
