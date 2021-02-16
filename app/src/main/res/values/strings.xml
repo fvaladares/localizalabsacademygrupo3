@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Rent a Car</string>
+    <string name="pickup_label">Where do you want to pick-up your car?</string>
+    <string name="return_label">Where do you want to return your car?</string>
+    <string name="return_same_pickup_location">Return in the same pick-up location?</string>
+    <string name="continue_label">Continue</string>
+
+
 </resources>
