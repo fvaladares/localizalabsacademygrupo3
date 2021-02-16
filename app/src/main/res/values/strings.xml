@@ -5,6 +5,12 @@
     <string name="return_same_pickup_location">Return in the same pick-up location?</string>
     <string name="continue_label">Continue</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="near_you">Near you</string>
+    <string name="use_my_current_location">Use my current location</string>
+    <string name="select_agency">Search for locations</string>
+    <string name="pickup_date">Select the pick-up date</string>
+    <string name="return_date">Select the return date</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 

@@ -30,6 +30,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     companion object {
-        private const val TAG = "MainActivity"
+        private const val TAG = "RENTMainActivity"
     }
 }

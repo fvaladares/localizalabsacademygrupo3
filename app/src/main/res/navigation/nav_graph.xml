@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
     android:label="@string/app_name"
     app:startDestination="@id/startFragment">
 
@@ -10,5 +9,18 @@
         android:id="@+id/startFragment"
         android:name="com.localizalabsacademy.mobile.rentacar.ui.StartFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_startFragment_to_selectAgencyFragment"
+            app:destination="@id/selectAgencyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectAgencyFragment"
+        android:name="com.localizalabsacademy.mobile.rentacar.ui.SelectAgencyFragment"
+        android:label="@string/select_agency"
+        tools:layout="@layout/fragment_select_agency">
+        <action
+            android:id="@+id/action_selectAgencyFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
 </navigation>

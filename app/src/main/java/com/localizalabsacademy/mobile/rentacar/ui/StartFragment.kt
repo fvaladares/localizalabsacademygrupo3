@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.localizalabsacademy.mobile.rentacar.R
 import com.localizalabsacademy.mobile.rentacar.databinding.FragmentStartBinding
 
 
@@ -21,9 +24,20 @@ class StartFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        Log.d(TAG, "onCreteView")
+        Log.d(TAG, "onCreteView")
         val fragmentBinding = FragmentStartBinding.inflate(inflater, container, false)
         binding = fragmentBinding
+
+        /**
+         * Call the SelectAgencyFragment on touch
+         */
+        binding?.startTietPickupAgency?.onFocusChangeListener =
+            OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    goToNextScreen()
+                }
+            }
+
         return fragmentBinding.root
     }
 
@@ -32,6 +46,14 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "onViewCreated")
         binding?.startFragment = this
+    }
+
+    /**
+     * Navigate to the next screen to choose pickup date.
+     */
+    fun goToNextScreen() {
+        Log.d(TAG, "goToNextScreen()")
+        findNavController().navigate(R.id.action_startFragment_to_selectAgencyFragment)
     }
 
 
@@ -47,6 +69,6 @@ class StartFragment : Fragment() {
 
 
     companion object {
-        private const val TAG = "StartFragment"
+        private const val TAG = "RENTStartFragment"
     }
 }
