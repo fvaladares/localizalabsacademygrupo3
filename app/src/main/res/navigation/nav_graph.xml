@@ -29,5 +29,11 @@
     <fragment
         android:id="@+id/selectDateFragment"
         android:name="com.localizalabsacademy.mobile.rentacar.ui.SelectDateFragment"
-        android:label="SelectDateFragment" />
+        android:label="SelectDateFragment">
+        <action
+            android:id="@+id/action_selectDateFragment_to_startFragment"
+            app:destination="@id/startFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

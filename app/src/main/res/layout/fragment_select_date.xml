@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="selectDateFragment"
+            type="com.localizalabsacademy.mobile.rentacar.ui.SelectDateFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +30,7 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{()->selectDateFragment.cancelAction()}"
             android:text="@string/cancel"
             app:layout_constraintEnd_toStartOf="@id/date_btn_ok"
             app:layout_constraintTop_toBottomOf="@id/date_calendar" />
@@ -36,6 +40,7 @@
             android:id="@+id/date_btn_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{()->selectDateFragment.okButtonAction()}"
             android:text="@string/ok"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/date_calendar" />
