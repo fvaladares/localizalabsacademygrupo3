@@ -34,7 +34,7 @@ class StartFragment : Fragment() {
         binding?.startTietPickupAgency?.onFocusChangeListener =
             OnFocusChangeListener { _, hasFocus ->
                 if (hasFocus) {
-                    goToNextScreen()
+                    goToLocationScreen()
                 }
             }
 
@@ -49,11 +49,20 @@ class StartFragment : Fragment() {
     }
 
     /**
+     * Navigate to the next screen to choose pickup location.
+     */
+    fun goToLocationScreen() {
+        Log.d(TAG, "goToLocationScreen()")
+        findNavController().navigate(R.id.action_startFragment_to_selectAgencyFragment)
+    }
+
+
+    /**
      * Navigate to the next screen to choose pickup date.
      */
-    fun goToNextScreen() {
-        Log.d(TAG, "goToNextScreen()")
-        findNavController().navigate(R.id.action_startFragment_to_selectAgencyFragment)
+    fun goToCalendarScreen() {
+        Log.d(TAG, "goToCalendarScreen()")
+        findNavController().navigate(R.id.action_startFragment_to_selectDateFragment)
     }
 
 

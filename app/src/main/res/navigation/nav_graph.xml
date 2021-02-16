@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_startFragment_to_selectAgencyFragment"
             app:destination="@id/selectAgencyFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_selectDateFragment"
+            app:destination="@id/selectDateFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectAgencyFragment"
@@ -23,4 +26,8 @@
             android:id="@+id/action_selectAgencyFragment_to_startFragment"
             app:destination="@id/startFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/selectDateFragment"
+        android:name="com.localizalabsacademy.mobile.rentacar.ui.SelectDateFragment"
+        android:label="SelectDateFragment" />
 </navigation>

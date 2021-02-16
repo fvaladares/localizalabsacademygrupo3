@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/text_margin">
+            android:padding="@dimen/std_margin">
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:focusable="true"
                     android:maxLines="1"
-                    android:onClick="@{() -> startFragment.goToNextScreen()}" />
+                    android:onClick="@{() -> startFragment.goToLocationScreen()}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -46,7 +46,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/std_margin"
                 android:hint="@string/return_label"
                 app:helperTextTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1">
 
@@ -70,7 +70,15 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_arrow_forward"
                 android:drawablePadding="8dp"
+                android:onClick="@{() -> startFragment.goToCalendarScreen()}"
                 android:text="@string/pickup_date" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/start_tv_selected_pickup_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:text="@string/return_date_sample" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/start_tv_return_date"
@@ -80,15 +88,22 @@
                 android:drawablePadding="8dp"
                 android:text="@string/return_date" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/start_tv_selected_return_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:text="@string/return_date_sample" />
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/start_btn_continue"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/text_margin"
+                android:layout_marginHorizontal="@dimen/std_margin"
                 android:text="@string/continue_label"
-                app:cornerRadius="@dimen/text_margin" />
+                app:cornerRadius="@dimen/std_margin" />
 
 
         </LinearLayout>
