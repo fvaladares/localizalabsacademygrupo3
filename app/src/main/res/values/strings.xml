@@ -4,6 +4,8 @@
     <string name="return_label">Where do you want to return your car?</string>
     <string name="return_same_pickup_location">Return in the same pick-up location?</string>
     <string name="continue_label">Continue</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
