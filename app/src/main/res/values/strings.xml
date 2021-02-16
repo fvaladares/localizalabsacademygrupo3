@@ -13,6 +13,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="cancel">Cancel</string>
     <string name="return_date_sample">Ter, 16 Fevereiro 2021, 14:30</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
