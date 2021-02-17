@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="selectHourFragment"
+            type="com.localizalabsacademy.mobile.rentacar.ui.SelectHourFragment" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +24,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/list_item_hour" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/item_btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> selectHourFragment.pickHour()}"
+            android:text="@string/ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -15,7 +15,7 @@ import com.localizalabsacademy.mobile.rentacar.databinding.FragmentSelectDateBin
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-private const val TAG = "SelectDateFragment"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -75,6 +75,7 @@ class SelectDateFragment : Fragment() {
     }
 
     companion object {
+        private const val TAG = "SelectDateFragment"
 
         /**
          * Use this factory method to create a new instance of

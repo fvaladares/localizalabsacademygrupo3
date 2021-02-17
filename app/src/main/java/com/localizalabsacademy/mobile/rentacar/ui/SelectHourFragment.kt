@@ -1,60 +1,74 @@
 package com.localizalabsacademy.mobile.rentacar.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.localizalabsacademy.mobile.rentacar.R
+import com.localizalabsacademy.mobile.rentacar.adapter.ItemHourAdapter
+import com.localizalabsacademy.mobile.rentacar.databinding.FragmentSelectHourBinding
+import com.localizalabsacademy.mobile.rentacar.util.HourSource
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
  * Use the [SelectHourFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+
 class SelectHourFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private var binding: FragmentSelectHourBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_select_hour, container, false)
+        Log.d(TAG, "onCreateView")
+        val fragmentBinding = FragmentSelectHourBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+        binding = fragmentBinding
+
+        return fragmentBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding?.selectHourFragment = this
+
+        val myDataSet = HourSource().getHours()
+
+        val layoutManager = LinearLayoutManager(context)
+
+        binding?.selectHourRecyclerView?.apply {
+            adapter =
+                ItemHourAdapter(context, myDataSet)
+            this.layoutManager = layoutManager
+            setHasFixedSize(true)
+        }
+    }
+
+    fun pickHour() {
+        findNavController().navigate(R.id.action_selectHourFragment_to_startFragment)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SelectHourFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SelectHourFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        const val TAG: String = "SelectHourFragment"
     }
+
+
 }

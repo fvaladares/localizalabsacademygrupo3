@@ -66,6 +66,17 @@ class StartFragment : Fragment() {
     }
 
 
+    fun goToMyReservationScreen() {
+        Log.d(TAG, "goToMyReservationScreen()")
+        findNavController().navigate(R.id.action_startFragment_to_reservationsFragment)
+    }
+
+    fun goToSummaryScreen() {
+        Log.d(TAG, "goToSummaryScreen")
+        findNavController().navigate(R.id.action_startFragment_to_summaryFragment)
+    }
+
+
     /**
      * This fragment lifecycle method is called when the view hierarchy associated with the fragment
      * is being removed. As a result, clear out the binding object.

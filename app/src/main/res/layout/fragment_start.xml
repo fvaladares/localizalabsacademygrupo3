@@ -103,7 +103,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/std_margin"
                 android:text="@string/continue_label"
+                android:onClick="@{() -> startFragment.goToSummaryScreen()}"
                 app:cornerRadius="@dimen/std_margin" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/start_btn_reservation"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/std_margin"
+                android:onClick="@{() -> startFragment.goToMyReservationScreen()}"
+                android:text="@string/my_reservations"
+                app:cornerRadius="@dimen/std_margin"
+                app:icon="@drawable/ic_date_range" />
 
 
         </LinearLayout>
