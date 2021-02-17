@@ -6,24 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.localizalabsacademy.mobile.rentacar.R
 import com.localizalabsacademy.mobile.rentacar.adapter.ItemHourAdapter
 import com.localizalabsacademy.mobile.rentacar.databinding.FragmentSelectHourBinding
-import com.localizalabsacademy.mobile.rentacar.util.HourSource
-
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SelectHourFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+import com.localizalabsacademy.mobile.rentacar.model.RentViewModel
 
 
 class SelectHourFragment : Fragment() {
 
     private var binding: FragmentSelectHourBinding? = null
+    private val sharedViewModel: RentViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,17 +39,16 @@ class SelectHourFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.selectHourFragment = this
-
-        val myDataSet = HourSource().getHours()
-
         val layoutManager = LinearLayoutManager(context)
 
-        binding?.selectHourRecyclerView?.apply {
-            adapter =
-                ItemHourAdapter(context, myDataSet)
-            this.layoutManager = layoutManager
-            setHasFixedSize(true)
+        binding?.apply {
+            selectHourFragment = this@SelectHourFragment
+            selectHourRecyclerView.apply {
+                adapter =
+                    ItemHourAdapter(context, sharedViewModel.getDataSet())
+                this.layoutManager = layoutManager
+                setHasFixedSize(true)
+            }
         }
     }
 

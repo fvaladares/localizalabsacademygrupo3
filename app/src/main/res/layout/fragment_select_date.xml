@@ -8,6 +8,10 @@
         <variable
             name="selectDateFragment"
             type="com.localizalabsacademy.mobile.rentacar.ui.SelectDateFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.localizalabsacademy.mobile.rentacar.model.RentViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

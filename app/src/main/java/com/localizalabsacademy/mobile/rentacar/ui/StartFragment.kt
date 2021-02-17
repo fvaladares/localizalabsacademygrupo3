@@ -7,9 +7,12 @@ import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.localizalabsacademy.mobile.rentacar.R
 import com.localizalabsacademy.mobile.rentacar.databinding.FragmentStartBinding
+
+import com.localizalabsacademy.mobile.rentacar.model.RentViewModel
 
 
 class StartFragment : Fragment() {
@@ -17,7 +20,7 @@ class StartFragment : Fragment() {
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
     private var binding: FragmentStartBinding? = null
-//    private val sharedViewModel: OrderViewModel by activityViewModels()
+    private val sharedViewModel: RentViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +28,11 @@ class StartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         Log.d(TAG, "onCreteView")
-        val fragmentBinding = FragmentStartBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentStartBinding.inflate(
+            inflater,
+            container,
+            false
+        )
         binding = fragmentBinding
 
         /**
@@ -34,6 +41,7 @@ class StartFragment : Fragment() {
         binding?.startTietPickupAgency?.onFocusChangeListener =
             OnFocusChangeListener { _, hasFocus ->
                 if (hasFocus) {
+                    sharedViewModel.setLocationQuestion(getString(R.string.pickup_label))
                     goToLocationScreen()
                 }
             }
@@ -45,7 +53,10 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "onViewCreated")
-        binding?.startFragment = this
+        binding?.apply {
+            startFragment = this@StartFragment
+            viewModel = sharedViewModel
+        }
     }
 
     /**

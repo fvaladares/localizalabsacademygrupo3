@@ -1,49 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/std_margin"
-    tools:context=".ui.SelectAgencyFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/select_agency_pickup"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <data>
+
+        <variable
+            name="selectAgencyFragment"
+            type="com.localizalabsacademy.mobile.rentacar.ui.SelectAgencyFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.localizalabsacademy.mobile.rentacar.model.RentViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:hint="@string/pickup_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:padding="@dimen/std_margin"
+        tools:context=".ui.SelectAgencyFragment">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/select_agency_pickup"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="0dp"
+            android:hint="@{viewModel.questionLocation}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/select_agency_near_you"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/near_you"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_agency_pickup" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/select_agency_gps"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_gps"
-        android:drawablePadding="8dp"
-        android:text="@string/use_my_current_location"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/select_agency_near_you" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/select_agency_near_you"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/near_you"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_agency_pickup" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/select_agency_gps" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/select_agency_gps"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_gps"
+            android:drawablePadding="8dp"
+            android:text="@string/use_my_current_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/select_agency_near_you" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/select_agency_gps" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

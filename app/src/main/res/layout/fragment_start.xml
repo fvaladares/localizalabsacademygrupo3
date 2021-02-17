@@ -9,6 +9,10 @@
         <variable
             name="startFragment"
             type="com.localizalabsacademy.mobile.rentacar.ui.StartFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.localizalabsacademy.mobile.rentacar.model.RentViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -30,6 +34,7 @@
                 android:hint="@string/pickup_label"
                 app:helperTextTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1">
 
+                <!--                Maybe we need to remove the onClick call-->
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/start_tiet_pickup_agency"
                     android:layout_width="match_parent"
