@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/selectHourFragment"
         android:name="com.localizalabsacademy.mobile.rentacar.ui.SelectHourFragment"
-        android:label="SelectHourFragment">
+        android:label="@string/pickup_hour">
         <action
             android:id="@+id/action_selectHourFragment_to_startFragment"
             app:destination="@id/startFragment"
@@ -69,5 +69,5 @@
     <fragment
         android:id="@+id/summaryFragment"
         android:name="com.localizalabsacademy.mobile.rentacar.ui.SummaryFragment"
-        android:label="SummaryFragment" />
+        android:label="@string/summary" />
 </navigation>
