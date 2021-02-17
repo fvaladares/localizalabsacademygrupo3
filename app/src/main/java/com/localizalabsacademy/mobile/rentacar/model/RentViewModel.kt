@@ -12,14 +12,24 @@ class RentViewModel : ViewModel() {
     private val _returnLocation = MutableLiveData<String>()
     val returnLocation: LiveData<String> = _returnLocation
 
-    private val _totalCost = MutableLiveData<BigDecimal>()
-    val totalCost: LiveData<BigDecimal> = _totalCost
+    private val _price = MutableLiveData<BigDecimal>()
+    val price: LiveData<BigDecimal> = _price
 
     private val _vehicle = MutableLiveData<Vehicle>()
-    val vehicle: LiveData<Vehicle> = _vehicle
+    var vehicle: LiveData<Vehicle> = _vehicle
 
-    private val _totalBill = MutableLiveData<BigDecimal>()
-    val totalBill: LiveData<BigDecimal> = _totalBill
+
+    fun setPickupLocation(pickupLocation: String) {
+        _pickupLocation.value = pickupLocation
+    }
+
+    fun setReturnLocation(returnLocation: String) {
+        _returnLocation.value = returnLocation
+    }
+
+    fun setVehicle(vehicle: Vehicle) {
+        _vehicle.value = vehicle
+    }
 
 
 }
