@@ -18,6 +18,9 @@
     <string name="my_reservations">My Reservations</string>
     <string name="pickup_hour">Select the pick-up hour</string>
     <string name="summary">Summary</string>
+    <string name="home">Home</string>
+    <string name="reservations">Reservations</string>
+    <string name="profile">Profile</string>
 
 
 </resources>

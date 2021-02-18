@@ -10,6 +10,8 @@
             name="startFragment"
             type="com.localizalabsacademy.mobile.rentacar.ui.StartFragment" />
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.localizalabsacademy.mobile.rentacar.model.RentViewModel" />
@@ -41,8 +43,8 @@
                     android:layout_height="wrap_content"
                     android:focusable="true"
                     android:maxLines="1"
-                    android:text="@{viewModel.pickupLocation}"
-                    android:onClick="@{() -> startFragment.goToLocationScreen()}" />
+                    android:onClick="@{() -> startFragment.goToLocationScreen()}"
+                    android:text="@{viewModel.pickupLocation}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/std_margin"
                 android:hint="@string/return_label"
+                android:visibility="@{startCbReturnSamePickup.checked ? View.GONE : View.VISIBLE}"
                 app:helperTextTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1">
 
                 <com.google.android.material.textfield.TextInputEditText
