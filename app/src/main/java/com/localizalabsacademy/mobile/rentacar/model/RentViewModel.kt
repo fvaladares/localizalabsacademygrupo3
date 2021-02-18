@@ -34,22 +34,42 @@ class RentViewModel : ViewModel() {
         _returnLocation.value = returnLocation
     }
 
-    fun setLocation(location: String) {
+    fun setLocation() {
+        val stringTest = Resources.getSystem()
+            .getString(R.string.pickup_label)
         if (questionLocation.value
-                .equals(
-                    Resources.getSystem()
-                        .getString(R.string.pickup_label),
-                )
+                .toString().equals(stringTest)
         ) {
-            if (pickupLocation.value.isNullOrBlank()) {
+            if (!pickupLocation.value.isNullOrBlank()) {
                 _returnLocation.value = ""
             }
-            setPickupLocation(location)
+            setPickupLocation("location")
 
         } else {
-            setReturnLocation(location)
+            setReturnLocation("location")
         }
     }
+
+
+    fun getLocation(): String = when (questionLocation.value) {
+        Resources.getSystem().getString(R.string.pickup_label) ->
+            pickupLocation.toString()
+        else ->
+            returnLocation.toString()
+    }
+
+//        if (questionLocation.value
+//                .equals(
+//                    Resources.getSystem()
+//                        .getString(R.string.pickup_label),
+//                )
+//        ) {
+//            pickupLocation
+//
+//        } else {
+//            returnLocation
+//        }
+//    }
 
     fun setLocationQuestion(questionLocation: String) {
         _questionLocation.value = questionLocation

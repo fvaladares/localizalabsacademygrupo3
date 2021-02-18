@@ -46,6 +46,15 @@ class StartFragment : Fragment() {
                 }
             }
 
+
+        binding?.startTietReturnAgency?.onFocusChangeListener =
+            OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    sharedViewModel.setLocationQuestion(getString(R.string.return_label))
+                    goToLocationScreen()
+                }
+            }
+
         return fragmentBinding.root
     }
 
@@ -56,6 +65,7 @@ class StartFragment : Fragment() {
         binding?.apply {
             startFragment = this@StartFragment
             viewModel = sharedViewModel
+            lifecycleOwner = viewLifecycleOwner
         }
     }
 

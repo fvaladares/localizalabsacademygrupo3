@@ -34,6 +34,15 @@ class ReservationsFragment : Fragment() {
         return fragmentReservationsBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.apply {
+            reservationsFragment = this@ReservationsFragment
+            viewModel = sharedViewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
+    }
+
     companion object {
         const val TAG = "RENTReservationFragment"
     }

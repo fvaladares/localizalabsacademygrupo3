@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.localizalabsacademy.mobile.rentacar.databinding.FragmentSelectAgencyBinding
@@ -40,13 +41,17 @@ class SelectAgencyFragment : Fragment() {
         binding?.apply {
             selectAgencyFragment = this@SelectAgencyFragment
             viewModel = sharedViewModel
+            lifecycleOwner = viewLifecycleOwner
+            selectBtnAgencyOk.setOnClickListener {
+                Toast.makeText(context, "Botao acionado", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-
-    fun setAgencyLocation() {
-        sharedViewModel.setLocation("Test")
-    }
+//
+//    fun setAgencyLocation(location: String) {
+//        sharedViewModel.setLocation(location)
+//    }
 
     companion object {
         const val TAG = "RENTSelectAgency"

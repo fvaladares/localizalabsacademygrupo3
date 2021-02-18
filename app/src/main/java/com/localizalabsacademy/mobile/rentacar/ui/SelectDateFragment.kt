@@ -40,6 +40,7 @@ class SelectDateFragment : Fragment() {
         binding?.apply {
             selectDateFragment = this@SelectDateFragment
             viewModel = sharedViewModel
+            lifecycleOwner = viewLifecycleOwner
         }
     }
 

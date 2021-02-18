@@ -43,6 +43,7 @@ class SelectHourFragment : Fragment() {
 
         binding?.apply {
             selectHourFragment = this@SelectHourFragment
+            lifecycleOwner = viewLifecycleOwner
             selectHourRecyclerView.apply {
                 adapter =
                     ItemHourAdapter(context, sharedViewModel.getDataSet())

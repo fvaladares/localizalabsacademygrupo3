@@ -41,6 +41,7 @@
                     android:layout_height="wrap_content"
                     android:focusable="true"
                     android:maxLines="1"
+                    android:text="@{viewModel.pickupLocation}"
                     android:onClick="@{() -> startFragment.goToLocationScreen()}" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -107,8 +108,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/std_margin"
-                android:text="@string/continue_label"
                 android:onClick="@{() -> startFragment.goToSummaryScreen()}"
+                android:text="@string/continue_label"
                 app:cornerRadius="@dimen/std_margin" />
 
             <com.google.android.material.button.MaterialButton

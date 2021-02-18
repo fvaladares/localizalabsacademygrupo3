@@ -22,7 +22,7 @@
         tools:context=".ui.SelectAgencyFragment">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/select_agency_pickup"
+            android:id="@+id/select_agency_til_location"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -31,8 +31,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/select_agency_et_agencyName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.returnLocation, default=my_default}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textview.MaterialTextView
@@ -41,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/near_you"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/select_agency_pickup" />
+            app:layout_constraintTop_toBottomOf="@+id/select_agency_til_location" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/select_agency_gps"
@@ -54,11 +56,21 @@
             app:layout_constraintTop_toBottomOf="@id/select_agency_near_you" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/select_agency_rv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/select_agency_gps" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/select_btn_agency_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/ok"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/select_agency_til_location" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
