@@ -36,10 +36,6 @@ class ItemHourAdapter(
 
         }
     }
-
-    fun updateData() {
-        notifyDataSetChanged()
-    }
-
     override fun getItemCount(): Int = dataSet.size
+
 }

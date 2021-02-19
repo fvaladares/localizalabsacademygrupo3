@@ -68,6 +68,9 @@ class RentViewModel : ViewModel() {
 
 
     fun setHour(time: Long) {
+        Log.w("FGV_RentViewModel", time.toString())
+
+
         if (isPickup) {
             setPickupDateHour(time)
         } else {
@@ -82,7 +85,7 @@ class RentViewModel : ViewModel() {
     }
 
     private fun setReturnDateHour(time: Long) {
-        if (!time.equals(0)) {
+        if (time != 0L) {
             _returnDateHour.value = HourSource.convertToDate(time)
         } else {
             _returnDateHour.value = HourSource.convertToDate(0)

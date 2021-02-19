@@ -46,6 +46,7 @@ class SelectHourFragment : Fragment() {
             selectHourFragment = this@SelectHourFragment
             lifecycleOwner = viewLifecycleOwner
             selectHourRecyclerView.apply {
+
                 adapter =
                     ItemHourAdapter(
                         sharedViewModel.getHourDataSet(),
@@ -54,6 +55,7 @@ class SelectHourFragment : Fragment() {
                     )
                 this.layoutManager = layoutManager
                 setHasFixedSize(true)
+
             }
         }
     }

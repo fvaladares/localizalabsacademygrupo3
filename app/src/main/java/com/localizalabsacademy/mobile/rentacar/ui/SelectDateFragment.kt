@@ -48,7 +48,9 @@ class SelectDateFragment : Fragment() {
                 c.set(year, month, dayOfMonth)
                 Log.d("FGV>>>", "c.time ${c.time}")
                 sharedViewModel.setHour(c.timeInMillis)
-                view.setDate(c.timeInMillis)
+                view.date = c.timeInMillis
+                Log.d("FGV>>>",
+                    "sharedViewModel.getHourDataSet() ${sharedViewModel.getHourDataSet()}")
                 Log.d("FGV>>>",
                     "sharedViewModel.pickupDateHour.value ${sharedViewModel.pickupDateHour.value}")
                 Log.d("FGV>>>",
@@ -60,6 +62,10 @@ class SelectDateFragment : Fragment() {
 
     fun okButtonAction() {
         Log.d("FGV>>>", "Starting onButtonAction")
+
+        // Used to generate the Hour data set
+        sharedViewModel.setHour(binding!!.dateCalendar.date)
+
         setDateRouteTitleAndNavigate()
     }
 
