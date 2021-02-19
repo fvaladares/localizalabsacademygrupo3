@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.localizalabsacademy.mobile.rentacar.R
 import com.localizalabsacademy.mobile.rentacar.databinding.FragmentSelectAgencyBinding
 import com.localizalabsacademy.mobile.rentacar.model.RentViewModel
 
@@ -42,11 +44,20 @@ class SelectAgencyFragment : Fragment() {
             selectAgencyFragment = this@SelectAgencyFragment
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
-            selectBtnAgencyOk.setOnClickListener {
-                sharedViewModel.setLocation(selectAgencyEtAgencyName.text.toString())
-                Toast.makeText(context, "Botao acionado", Toast.LENGTH_SHORT).show()
-            }
+//            selectBtnAgencyOk.setOnClickListener {
+//                sharedViewModel.setLocation(selectAgencyEtAgencyName.text.toString())
+//                Toast.makeText(context, "Botao acionado", Toast.LENGTH_SHORT).show()
+//            }
         }
+    }
+
+    /**
+     * Navigate back to [StartFragment]
+     */
+    fun returnStartFragment() {
+        sharedViewModel.setLocation(binding!!.selectAgencyEtAgencyName.text.toString())
+        Toast.makeText(context, "Botao acionado", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_selectAgencyFragment_to_startFragment)
     }
 
 //

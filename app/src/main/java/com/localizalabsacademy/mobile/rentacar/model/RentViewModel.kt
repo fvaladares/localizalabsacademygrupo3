@@ -20,12 +20,12 @@ class RentViewModel : ViewModel() {
         _returnLocation
 
     private val _pickupDateHour =
-        MutableLiveData(Date(0))
+        MutableLiveData(Date(0L))
     val pickupDateHour: LiveData<Date> =
         _pickupDateHour
 
     private val _returnDateHour =
-        MutableLiveData(Date(0))
+        MutableLiveData(Date(0L))
     val returnDateHour: LiveData<Date> =
         _returnDateHour
 
@@ -44,7 +44,7 @@ class RentViewModel : ViewModel() {
     val questionLocation: LiveData<String> =
         _questionLocation
 
-    private val _pickupEqualsToReturn =
+    private var _pickupEqualsToReturn =
         MutableLiveData(true)
     val pickupEqualsToReturn: LiveData<Boolean> =
         _pickupEqualsToReturn
@@ -66,6 +66,9 @@ class RentViewModel : ViewModel() {
         _returnLocation.value = returnLocation
     }
 
+    fun setPickupEqualsToReturn() {
+        _pickupEqualsToReturn.value = !_pickupEqualsToReturn.value!!
+    }
 
     fun setHour(time: Long) {
         Log.w("FGV_RentViewModel", time.toString())
@@ -148,6 +151,14 @@ class RentViewModel : ViewModel() {
             HourSource.getHours(returnDateHour.value!!)
         Log.w("FGV", _hourDataSource.value!!.toString())
         return hourDataSource.value!!
+    }
+
+    fun setHourForPickupOrReturn(position: Int) {
+        if (isPickup) {
+            _pickupDateHour.value = _hourDataSource.value!![position]
+        } else {
+            _returnDateHour.value = _hourDataSource.value!![position]
+        }
     }
 
     fun getToday(): Long = HourSource.getTime()

@@ -71,7 +71,8 @@
                 android:id="@+id/start_cb_return_same_pickup"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:checked="@{viewModel.pickupEqualsToReturn, default=true}"
+                android:checked="@{viewModel.pickupEqualsToReturn, default = true}"
+                android:onClick="@{() -> startFragment.checkUncheck()}"
                 android:text="@string/return_same_pickup_location" />
 
             <com.google.android.material.textview.MaterialTextView

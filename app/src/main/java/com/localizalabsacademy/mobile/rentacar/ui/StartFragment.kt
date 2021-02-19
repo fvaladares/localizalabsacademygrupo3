@@ -22,6 +22,10 @@ class StartFragment : Fragment() {
     private var binding: FragmentStartBinding? = null
     private val sharedViewModel: RentViewModel by activityViewModels()
 
+    companion object {
+        private const val TAG = "RENTStartFragment"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -110,7 +114,6 @@ class StartFragment : Fragment() {
         }
     }
 
-
     fun goToMyReservationScreen() {
         Log.d(TAG, "goToMyReservationScreen()")
         findNavController().navigate(R.id.action_startFragment_to_reservationsFragment)
@@ -119,6 +122,10 @@ class StartFragment : Fragment() {
     fun goToSummaryScreen() {
         Log.d(TAG, "goToSummaryScreen")
         findNavController().navigate(R.id.action_startFragment_to_summaryFragment)
+    }
+
+    fun checkUncheck() {
+        sharedViewModel.setPickupEqualsToReturn()
     }
 
 
@@ -130,10 +137,5 @@ class StartFragment : Fragment() {
         super.onDestroyView()
         Log.d(TAG, "onDestroy")
         binding = null
-    }
-
-
-    companion object {
-        private const val TAG = "RENTStartFragment"
     }
 }

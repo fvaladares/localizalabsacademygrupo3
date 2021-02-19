@@ -80,6 +80,12 @@ class SelectDateFragment : Fragment() {
         Log.d(TAG, "Cancel Action activated")
     }
 
+    fun setMinDate(): Long =
+        if
+                (sharedViewModel.isPickup) sharedViewModel.getToday()
+        else
+            sharedViewModel.pickupDateHour.value!!.time
+
 
     private fun setDateRouteTitleAndNavigate() {
         if (sharedViewModel.isPickup) {

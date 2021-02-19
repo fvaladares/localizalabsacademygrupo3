@@ -92,4 +92,14 @@ object HourSource {
 
         return c.time
     }
+
+//    fun adjustPickupReturnHour(date: Date) {
+//        val c: Calendar = GregorianCalendar()
+//        c.apply {
+//            time = date
+//            c.set(Calendar.HOUR_OF_DAY, 24)
+//            c.set(Calendar.MINUTE, 0)
+//            c.set(Calendar.SECOND, 0)
+//        }
+//    }
 }

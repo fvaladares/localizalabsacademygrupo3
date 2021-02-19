@@ -51,7 +51,8 @@ class SelectHourFragment : Fragment() {
                     ItemHourAdapter(
                         sharedViewModel.getHourDataSet(),
                         context,
-                        sharedViewModel
+                        sharedViewModel,
+                        this@SelectHourFragment
                     )
                 this.layoutManager = layoutManager
                 setHasFixedSize(true)
