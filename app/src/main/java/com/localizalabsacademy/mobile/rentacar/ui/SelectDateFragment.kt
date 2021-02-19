@@ -42,7 +42,25 @@ class SelectDateFragment : Fragment() {
             selectDateFragment = this@SelectDateFragment
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
+            dateCalendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
+                Log.d("FGV>>>", "$year/$month/$dayOfMonth")
+                val c = Calendar.getInstance()
+                c.set(year, month, dayOfMonth)
+                Log.d("FGV>>>", "c.time ${c.time}")
+                sharedViewModel.setHour(c.timeInMillis)
+                view.setDate(c.timeInMillis)
+                Log.d("FGV>>>",
+                    "sharedViewModel.pickupDateHour.value ${sharedViewModel.pickupDateHour.value}")
+                Log.d("FGV>>>",
+                    "sharedViewModel.returnDateHour.value ${sharedViewModel.returnDateHour.value}")
+            }
         }
+    }
+
+
+    fun okButtonAction() {
+        Log.d("FGV>>>", "Starting onButtonAction")
+        setDateRouteTitleAndNavigate()
     }
 
 
@@ -56,14 +74,8 @@ class SelectDateFragment : Fragment() {
         Log.d(TAG, "Cancel Action activated")
     }
 
-    fun okButtonAction() {
-        val date: Long = binding!!.dateCalendar.date
-        sharedViewModel.setHour(date)
-        setDateRouteTitle()
-//        findNavController().navigate(R.id.action_selectDateFragment_to_selectHourFragment)
-    }
 
-    private fun setDateRouteTitle() {
+    private fun setDateRouteTitleAndNavigate() {
         if (sharedViewModel.isPickup) {
             val action = SelectDateFragmentDirections
                 .actionSelectDateFragmentToSelectHourFragment(

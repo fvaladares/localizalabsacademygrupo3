@@ -16,7 +16,7 @@ object HourSource {
         // Get the current time
         val calendar = Calendar.getInstance()
 //        val timeFormatter = SimpleDateFormat("HH:mm")
-        val currentHour = roundToNextWholeHour(calendar.time)
+        val currentHour = roundToNextWholeHour(date)
         val theEndOfTheDay = theEndOfTheDay(currentHour)
 
         var time: Date = currentHour

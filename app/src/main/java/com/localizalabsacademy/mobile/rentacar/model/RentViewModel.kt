@@ -83,9 +83,9 @@ class RentViewModel : ViewModel() {
 
     private fun setReturnDateHour(time: Long) {
         if (!time.equals(0)) {
-            _returnDateHour.value = HourSource.convertToDate(0)
-        } else {
             _returnDateHour.value = HourSource.convertToDate(time)
+        } else {
+            _returnDateHour.value = HourSource.convertToDate(0)
         }
 
         Log.w("VIEWMODEL", pickupDateHour.value.toString())
@@ -138,11 +138,12 @@ class RentViewModel : ViewModel() {
      * This function returns a [List<Date>] of the possible pickup or return hour
      */
     fun getHourDataSet(): List<Date> {
-        _hourDataSource.value = if (pickupDateHour.value!! != Date(0))
+
+        _hourDataSource.value = if (isPickup)
             HourSource.getHours(pickupDateHour.value!!)
         else
             HourSource.getHours(returnDateHour.value!!)
-
+        Log.w("FGV", _hourDataSource.value!!.toString())
         return hourDataSource.value!!
     }
 

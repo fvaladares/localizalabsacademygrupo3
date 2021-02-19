@@ -41,6 +41,7 @@ class SelectHourFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(context)
 
+
         binding?.apply {
             selectHourFragment = this@SelectHourFragment
             lifecycleOwner = viewLifecycleOwner
