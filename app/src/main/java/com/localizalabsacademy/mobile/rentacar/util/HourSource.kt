@@ -2,13 +2,17 @@ package com.localizalabsacademy.mobile.rentacar.util
 
 import java.util.*
 
-class HourSource {
+object HourSource {
     private val _scheduleHourSource = mutableListOf<Date>()
     private val scheduleHourSource: List<Date>
         get() = _scheduleHourSource
 
+    fun getTime(): Long = Date().time
 
-    fun getHours(): List<Date> {
+    fun convertToDate(time: Long): Date = Date(time)
+
+
+    fun getHours(date: Date): List<Date> {
         // Get the current time
         val calendar = Calendar.getInstance()
 //        val timeFormatter = SimpleDateFormat("HH:mm")

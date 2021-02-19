@@ -1,29 +1,61 @@
 package com.localizalabsacademy.mobile.rentacar.model
 
-import android.content.res.Resources
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.localizalabsacademy.mobile.rentacar.R
 import com.localizalabsacademy.mobile.rentacar.util.HourSource
 import java.math.BigDecimal
 import java.util.*
 
 class RentViewModel : ViewModel() {
-    private val _pickupLocation = MutableLiveData<String>()
-    val pickupLocation: LiveData<String> = _pickupLocation
+    private val _pickupLocation =
+        MutableLiveData<String>()
+    val pickupLocation: LiveData<String> =
+        _pickupLocation
 
-    private val _returnLocation = MutableLiveData<String>()
-    val returnLocation: LiveData<String> = _returnLocation
+    private val _returnLocation =
+        MutableLiveData<String>()
+    val returnLocation: LiveData<String> =
+        _returnLocation
 
-    private val _price = MutableLiveData<BigDecimal>()
-    val price: LiveData<BigDecimal> = _price
+    private val _pickupDateHour =
+        MutableLiveData(Date(0))
+    val pickupDateHour: LiveData<Date> =
+        _pickupDateHour
 
-    private val _vehicle = MutableLiveData<Vehicle>()
-    var vehicle: LiveData<Vehicle> = _vehicle
+    private val _returnDateHour =
+        MutableLiveData(Date(0))
+    val returnDateHour: LiveData<Date> =
+        _returnDateHour
 
-    private val _questionLocation = MutableLiveData<String>()
-    val questionLocation: LiveData<String> = _questionLocation
+    private val _price =
+        MutableLiveData<BigDecimal>()
+    val price: LiveData<BigDecimal> =
+        _price
+
+    private val _vehicle =
+        MutableLiveData<Vehicle>()
+    var vehicle: LiveData<Vehicle> =
+        _vehicle
+
+    private val _questionLocation =
+        MutableLiveData<String>()
+    val questionLocation: LiveData<String> =
+        _questionLocation
+
+    private val _pickupEqualsToReturn =
+        MutableLiveData(true)
+    val pickupEqualsToReturn: LiveData<Boolean> =
+        _pickupEqualsToReturn
+
+    private val _hourDataSource =
+        MutableLiveData<List<Date>>()
+    private val hourDataSource: LiveData<List<Date>> =
+        _hourDataSource
+
+    private var _isPickup = true
+    var isPickup = _isPickup
 
 
     private fun setPickupLocation(pickupLocation: String) {
@@ -34,42 +66,65 @@ class RentViewModel : ViewModel() {
         _returnLocation.value = returnLocation
     }
 
-    fun setLocation() {
-        val stringTest = Resources.getSystem()
-            .getString(R.string.pickup_label)
+
+    fun setHour(time: Long) {
+        if (isPickup) {
+            setPickupDateHour(time)
+        } else {
+            setReturnDateHour(time)
+        }
+    }
+
+
+    private fun setPickupDateHour(time: Long) {
+        _pickupDateHour.value = HourSource.convertToDate(time)
+        Log.w("VIEWMODEL", pickupDateHour.value.toString())
+    }
+
+    private fun setReturnDateHour(time: Long) {
+        if (!time.equals(0)) {
+            _returnDateHour.value = HourSource.convertToDate(0)
+        } else {
+            _returnDateHour.value = HourSource.convertToDate(time)
+        }
+
+        Log.w("VIEWMODEL", pickupDateHour.value.toString())
+    }
+
+    fun setLocation(location: String) {
+        val stringTest = "Where do you want to pick-up your car?"
         if (questionLocation.value
                 .toString().equals(stringTest)
         ) {
             if (!pickupLocation.value.isNullOrBlank()) {
-                _returnLocation.value = ""
+                _returnLocation.value = location
             }
-            setPickupLocation("location")
+            setPickupLocation(location)
+            if (pickupEqualsToReturn.value == true) {
+                setReturnLocation(location)
+            }
 
         } else {
-            setReturnLocation("location")
+            setReturnLocation(location)
         }
     }
 
 
     fun getLocation(): String = when (questionLocation.value) {
-        Resources.getSystem().getString(R.string.pickup_label) ->
-            pickupLocation.toString()
-        else ->
-            returnLocation.toString()
+        "Where do you want to pick-up your car?" ->
+
+            when (pickupLocation.value) {
+                null -> ""
+                else -> pickupLocation.value.toString()
+            }
+        "Where do you want to return your car?" ->
+            when (returnLocation.value) {
+                null -> ""
+                else -> returnLocation.value.toString()
+            }
+        else -> ""
     }
 
-//        if (questionLocation.value
-//                .equals(
-//                    Resources.getSystem()
-//                        .getString(R.string.pickup_label),
-//                )
-//        ) {
-//            pickupLocation
-//
-//        } else {
-//            returnLocation
-//        }
-//    }
 
     fun setLocationQuestion(questionLocation: String) {
         _questionLocation.value = questionLocation
@@ -79,7 +134,22 @@ class RentViewModel : ViewModel() {
         _vehicle.value = vehicle
     }
 
-    fun getDataSet(): List<Date> = HourSource().getHours()
+    /**
+     * This function returns a [List<Date>] of the possible pickup or return hour
+     */
+    fun getHourDataSet(): List<Date> {
+        _hourDataSource.value = if (pickupDateHour.value!! != Date(0))
+            HourSource.getHours(pickupDateHour.value!!)
+        else
+            HourSource.getHours(returnDateHour.value!!)
 
+        return hourDataSource.value!!
+    }
+
+    fun getToday(): Long = HourSource.getTime()
+
+    fun changePickup(isPickup: Boolean) {
+        this.isPickup = isPickup
+    }
 
 }

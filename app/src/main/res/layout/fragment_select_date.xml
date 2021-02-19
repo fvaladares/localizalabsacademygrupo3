@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.widget.CalendarView" />
+
         <variable
             name="selectDateFragment"
             type="com.localizalabsacademy.mobile.rentacar.ui.SelectDateFragment" />
@@ -29,6 +31,7 @@
                 android:id="@+id/date_calendar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minDate="@{viewModel.getToday()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +52,7 @@
                 android:id="@+id/date_btn_ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{()->selectDateFragment.okButtonAction()}"
+                android:onClick="@{() -> selectDateFragment.okButtonAction()}"
                 android:text="@string/ok"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/date_calendar" />

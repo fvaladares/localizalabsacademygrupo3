@@ -8,9 +8,14 @@ import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.localizalabsacademy.mobile.rentacar.R
+import com.localizalabsacademy.mobile.rentacar.model.RentViewModel
 import java.util.*
 
-class ItemHourAdapter(private val contextCompat: Context?, private val dataSet: List<Date>) :
+class ItemHourAdapter(
+    private val dataSet: List<Date>,
+    private val context: Context,
+    private val viewModel: RentViewModel,
+) :
     RecyclerView.Adapter<ItemHourAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -27,6 +32,9 @@ class ItemHourAdapter(private val contextCompat: Context?, private val dataSet: 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataSet[position]
         holder.textView.text = item.toString()
+        holder.textView.setOnClickListener {
+
+        }
     }
 
     override fun getItemCount(): Int = dataSet.size

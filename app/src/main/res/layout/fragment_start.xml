@@ -6,11 +6,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="startFragment"
             type="com.localizalabsacademy.mobile.rentacar.ui.StartFragment" />
-
-        <import type="android.view.View" />
 
         <variable
             name="viewModel"
@@ -62,7 +62,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/start_tiet_return_agency"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.returnLocation}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,39 +71,43 @@
                 android:id="@+id/start_cb_return_same_pickup"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:checked="true"
+                android:checked="@{viewModel.pickupEqualsToReturn, default=true}"
                 android:text="@string/return_same_pickup_location" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/start_tv_pickup_date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_arrow_forward"
                 android:drawablePadding="8dp"
-                android:onClick="@{() -> startFragment.goToCalendarScreen()}"
+                android:onClick="@{() -> startFragment.goToCalendarScreen(true)}"
                 android:text="@string/pickup_date" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/start_tv_selected_pickup_date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="8dp"
-                android:text="@string/return_date_sample" />
+                android:text="@{viewModel.pickupDateHour.toString()}"
+                android:visibility="@{viewModel.pickupDateHour.toString() == null ? View.GONE : View.VISIBLE }" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/start_tv_return_date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_arrow_back"
                 android:drawablePadding="8dp"
-                android:text="@string/return_date" />
+                android:onClick="@{() -> startFragment.goToCalendarScreen(false)}"
+                android:text="@string/return_date"
+                android:visibility="@{viewModel.pickupDateHour.toString() == null ? View.GONE : View.VISIBLE }" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/start_tv_selected_return_date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="8dp"
-                android:text="@string/return_date_sample" />
+                android:text="@{viewModel.returnDateHour.toString()}"
+                android:visibility="@{viewModel.returnDateHour.toString() == null ? View.GONE : View.VISIBLE }" />
 
 
             <com.google.android.material.button.MaterialButton

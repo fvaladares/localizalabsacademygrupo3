@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.localizalabsacademy.mobile.rentacar.R
 import com.localizalabsacademy.mobile.rentacar.databinding.FragmentSelectDateBinding
 import com.localizalabsacademy.mobile.rentacar.model.RentViewModel
+import java.util.*
 
 
 class SelectDateFragment : Fragment() {
@@ -21,7 +22,7 @@ class SelectDateFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         // Inflate the layout for this fragment
         val fragmentBinding = FragmentSelectDateBinding.inflate(
@@ -56,9 +57,27 @@ class SelectDateFragment : Fragment() {
     }
 
     fun okButtonAction() {
-        findNavController().navigate(R.id.action_selectDateFragment_to_selectHourFragment)
-        Toast.makeText(context, "Okay button clicked", Toast.LENGTH_SHORT).show()
-        Log.d(TAG, "Okay Action activated")
+        val date: Long = binding!!.dateCalendar.date
+        sharedViewModel.setHour(date)
+        setDateRouteTitle()
+//        findNavController().navigate(R.id.action_selectDateFragment_to_selectHourFragment)
+    }
+
+    private fun setDateRouteTitle() {
+        if (sharedViewModel.isPickup) {
+            val action = SelectDateFragmentDirections
+                .actionSelectDateFragmentToSelectHourFragment(
+                    getString(R.string.pickup_hour),
+                )
+            findNavController().navigate(action)
+        } else {
+            val action = SelectDateFragmentDirections
+                .actionSelectDateFragmentToSelectHourFragment(
+                    getString(R.string.return_hour),
+                )
+            findNavController().navigate(action)
+        }
+
     }
 
 

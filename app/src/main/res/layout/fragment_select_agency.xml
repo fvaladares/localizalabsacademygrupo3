@@ -34,7 +34,7 @@
                 android:id="@+id/select_agency_et_agencyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.returnLocation, default=my_default}" />
+                android:text="@{viewModel.getLocation(), default=my_default}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textview.MaterialTextView

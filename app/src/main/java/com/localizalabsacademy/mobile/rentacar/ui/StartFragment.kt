@@ -25,7 +25,7 @@ class StartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         Log.d(TAG, "onCreteView")
         val fragmentBinding = FragmentStartBinding.inflate(
@@ -55,6 +55,7 @@ class StartFragment : Fragment() {
                 }
             }
 
+
         return fragmentBinding.root
     }
 
@@ -81,9 +82,32 @@ class StartFragment : Fragment() {
     /**
      * Navigate to the next screen to choose pickup date.
      */
-    fun goToCalendarScreen() {
+    fun goToCalendarScreen(isPickup: Boolean) {
         Log.d(TAG, "goToCalendarScreen()")
-        findNavController().navigate(R.id.action_startFragment_to_selectDateFragment)
+        sharedViewModel.apply { changePickup(isPickup) }
+        setDateRouteTitle(isPickup)
+
+//        findNavController().navigate(R.id.action_startFragment_to_selectDateFragment)
+    }
+
+    private fun setDateRouteTitle(isPickup: Boolean) {
+        if (isPickup) {
+            val action =
+                StartFragmentDirections
+                    .actionStartFragmentToSelectDateFragment(
+                        getString(
+                            R.string.pickup_date),
+                    )
+            findNavController().navigate(action)
+        } else {
+            val action =
+                StartFragmentDirections
+                    .actionStartFragmentToSelectDateFragment(
+                        getString(
+                            R.string.return_date),
+                    )
+            findNavController().navigate(action)
+        }
     }
 
 

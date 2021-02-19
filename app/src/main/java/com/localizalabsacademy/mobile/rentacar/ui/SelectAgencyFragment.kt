@@ -43,6 +43,7 @@ class SelectAgencyFragment : Fragment() {
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
             selectBtnAgencyOk.setOnClickListener {
+                sharedViewModel.setLocation(selectAgencyEtAgencyName.text.toString())
                 Toast.makeText(context, "Botao acionado", Toast.LENGTH_SHORT).show()
             }
         }

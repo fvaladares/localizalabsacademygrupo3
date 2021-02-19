@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/selectDateFragment"
         android:name="com.localizalabsacademy.mobile.rentacar.ui.SelectDateFragment"
-        android:label="@string/pickup_date">
+        android:label="{title}">
         <action
             android:id="@+id/action_selectDateFragment_to_startFragment"
             app:destination="@id/startFragment"
@@ -44,16 +44,22 @@
         <action
             android:id="@+id/action_selectDateFragment_to_selectHourFragment"
             app:destination="@id/selectHourFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/selectHourFragment"
         android:name="com.localizalabsacademy.mobile.rentacar.ui.SelectHourFragment"
-        android:label="@string/pickup_hour">
+        android:label="{title}">
         <action
             android:id="@+id/action_selectHourFragment_to_startFragment"
             app:destination="@id/startFragment"
             app:popUpTo="@id/startFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/reservationsFragment"
