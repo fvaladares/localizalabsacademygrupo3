@@ -4,5 +4,5 @@ import retrofit2.http.GET
 
 interface RentACarServices {
     @GET("api/Agency")
-    fun getAllAgencies()
+    suspend fun getAllAgencies()
 }

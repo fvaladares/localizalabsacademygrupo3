@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.localizalabsacademy.mobile.rentacar.util.HourSource
+import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.util.*
 
@@ -192,6 +194,24 @@ class RentViewModel : ViewModel() {
 
     fun changePickup(isPickup: Boolean) {
         this.isPickup = isPickup
+    }
+
+
+    fun searchAgenciesWS(query: String) {
+        viewModelScope.launch {
+            Log.d(
+                "RENT_ViewModel",
+                "Searching for agencies at the web server"
+            )
+
+//            val response = itemRepository.search(query)
+
+
+            Log.d(
+                "RENT_ViewModel",
+                "End of method >> Searching for agencies at the web server"
+            )
+        }
     }
 
 }
