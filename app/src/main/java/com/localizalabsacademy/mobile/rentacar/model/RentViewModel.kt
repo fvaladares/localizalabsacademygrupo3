@@ -98,38 +98,65 @@ class RentViewModel : ViewModel() {
     }
 
     fun setLocation(location: String) {
-        val stringTest = "Where do you want to pick-up your car?"
-        if (questionLocation.value
-                .toString().equals(stringTest)
-        ) {
+        if (isPickup) {
             if (!pickupLocation.value.isNullOrBlank()) {
                 _returnLocation.value = location
             }
             setPickupLocation(location)
             if (pickupEqualsToReturn.value == true) {
                 setReturnLocation(location)
+            } else {
+                setReturnLocation(location)
             }
+        }
 
-        } else {
-            setReturnLocation(location)
+
+//        val stringTest = "Where do you want to pick-up your car?"
+//        if (questionLocation.value
+//                .toString().equals(stringTest)
+//        ) {
+//            if (!pickupLocation.value.isNullOrBlank()) {
+//                _returnLocation.value = location
+//            }
+//            setPickupLocation(location)
+//            if (pickupEqualsToReturn.value == true) {
+//                setReturnLocation(location)
+//            }
+//
+//        } else {
+//            setReturnLocation(location)
+//        }
+    }
+
+
+    fun getLocation(): String = if (isPickup) {
+        when (pickupLocation.value) {
+            null -> ""
+            else -> pickupLocation.value.toString()
+        }
+    } else {
+        when (returnLocation.value) {
+            null -> ""
+            else -> returnLocation.value.toString()
         }
     }
 
 
-    fun getLocation(): String = when (questionLocation.value) {
-        "Where do you want to pick-up your car?" ->
-
-            when (pickupLocation.value) {
-                null -> ""
-                else -> pickupLocation.value.toString()
-            }
-        "Where do you want to return your car?" ->
-            when (returnLocation.value) {
-                null -> ""
-                else -> returnLocation.value.toString()
-            }
-        else -> ""
-    }
+//        when (questionLocation.value) {
+//
+//        "Where do you want to pick-up your car?" ->
+//
+//            when (pickupLocation.value) {
+//                null -> ""
+//                else -> pickupLocation.value.toString()
+//            }
+//        "Where do you want to return your car?" ->
+//            when (returnLocation.value) {
+//                null -> ""
+//                else -> returnLocation.value.toString()
+//            }
+//        else -> ""
+//    }
 
 
     fun setLocationQuestion(questionLocation: String) {

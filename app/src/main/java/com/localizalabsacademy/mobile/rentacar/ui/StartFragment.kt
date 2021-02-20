@@ -11,7 +11,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.localizalabsacademy.mobile.rentacar.R
 import com.localizalabsacademy.mobile.rentacar.databinding.FragmentStartBinding
-
 import com.localizalabsacademy.mobile.rentacar.model.RentViewModel
 
 
@@ -20,6 +19,8 @@ class StartFragment : Fragment() {
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
     private var binding: FragmentStartBinding? = null
+
+    //    private val sharedViewModel: RentViewModel by viewModel()
     private val sharedViewModel: RentViewModel by activityViewModels()
 
     companion object {

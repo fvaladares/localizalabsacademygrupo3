@@ -17,12 +17,14 @@ import com.localizalabsacademy.mobile.rentacar.model.RentViewModel
 class SelectAgencyFragment : Fragment() {
 
     private var binding: FragmentSelectAgencyBinding? = null
+
+    //    private val sharedViewModel: RentViewModel by viewModel()
     private val sharedViewModel: RentViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
 
         Log.d(TAG, "onCreateView()")
